@@ -1,0 +1,12 @@
+[2024-09-04 16:10:12.089]	 List of discovered tpm plugins: 
+[2024-09-04 16:10:12.098]	 Invoking /home/patrick/.config/tmux/plugins//tpm/bin/install_plugins
+[2024-09-04 16:10:12.122]	 Invoking /home/patrick/.config/tmux/plugins//tpm/bin/update_plugins all
+[2024-09-04 16:10:12.131]	 Updating all plugins!
+[2024-09-04 16:10:12.131]	 
+[2024-09-04 16:10:12.144]	 Invoking /home/patrick/.config/tmux/plugins//tpm/bin/clean_plugins all
+[2024-09-04 16:10:12.158]	 Removing "tmux-gruvbox"
+[2024-09-04 16:10:12.159]	   "tmux-gruvbox" clean success
+[2024-09-04 16:10:12.160]	 Removing "tmux-sensible"
+[2024-09-04 16:10:12.162]	   "tmux-sensible" clean success
+[2024-09-04 16:10:12.172]	 Done.
+
