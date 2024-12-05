@@ -11,7 +11,7 @@ require("oil").setup({
 
 require('nvim-treesitter.configs').setup {
     -- A list of parser names, or "all" (the listed parsers MUST always be installed)
-    ensure_installed = "all",
+    ensure_installed = 'all',
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
@@ -52,7 +52,6 @@ lspconfig.util.default_config.capabilities = vim.tbl_deep_extend(
 
 -- These are just examples. Replace them with the language
 -- servers you have installed in your system
-require('lspconfig').rust_analyzer.setup({})
 require('lspconfig').intelephense.setup({})
 -- require('lspconfig').phpactor.setup({
 --     cmd = { "phpactor", "language-server" },
@@ -62,20 +61,25 @@ require('lspconfig').intelephense.setup({})
 --         ["language_server_worse_reflection.inlay_hints.enable"] = true,
 --         ["language_server_worse_reflection.inlay_hints.params"] = true,
 --         ["language_server_worse_reflection.inlay_hints.types"] = true,
+--         ["language_server_worse_reflection.enable_cache"] =  true,
+--         ["language_server_worse_reflection.cache_dir"] = "%cache%/worse-reflection",
+--         ["language_worse_reflection.stub_dir"] = "/home/patrick/repos/Monorepo/services/sams/lumen/_ide_helper_models.php",
 --         ["language_server_configuration.auto_config"] = false,
 --         ["code_transform.import_globals"] = true,
 --         ["language_server_php_cs_fixer.enabled"] = true,
---         ["language_server_php_cs_fixer.bin"] = "%project_root%/lumen/vendor/bin/php-cs-fixer",
---         ["language_server_php_cs_fixer.config"] = "%project_root%/lumen/.php-cs-fixer.php",
+--         ["language_server_php_cs_fixer.bin"] = "/home/patrick/repos/Monorepo/services/sams/lumen/vendor/bin/php-cs-fixer",
+--         ["language_server_php_cs_fixer.config"] = "/home/patrick/repos/Monorepo/services/sams/lumen/.php-cs-fixer.php",
 --         ["language_server_php_cs_fixer.env"] = {
 --             ["XDEBUG_MODE"] = "off",
 --             ["PHP_CS_FIXER_IGNORE_ENV"] = false,
 --         },
+--
 --     },
 -- })
 require('lspconfig').lua_ls.setup({})
 require('lspconfig').jsonls.setup({})
 require('lspconfig').ts_ls.setup({})
+-- require('lspconfig').rust_analyzer.setup({})
 
 ---
 -- Autocompletion setup
@@ -98,7 +102,7 @@ cmp.setup({
 require("mason").setup()
 require("mason-lspconfig").setup()
 require("mason-nvim-dap").setup({
-    ensure_installed = { "php-debug-adapter" }
+    ensure_installed = { "php-debug-adapter", "codelldb" }
 })
 
 local dap = require('dap')
@@ -107,7 +111,6 @@ require('telescope').load_extension('dap')
 dap.adapters.php = {
     type = 'executable',
     command = 'node',
-    -- change this to where you build vscode-php-debug
     args = { os.getenv("HOME") .. "/vscode-php-debug/out/phpDebug.js" },
 
 }
