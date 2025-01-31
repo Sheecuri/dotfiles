@@ -41,14 +41,14 @@ require('telescope').setup({})
 ---
 vim.opt.signcolumn = 'yes'
 
-local lspconfig = require('lspconfig')
+-- local lspconfig = require('lspconfig')
 
 -- Add cmp_nvim_lsp capabilities settings to lspconfig
-lspconfig.util.default_config.capabilities = vim.tbl_deep_extend(
-    'force',
-    lspconfig.util.default_config.capabilities,
-    require('cmp_nvim_lsp').default_capabilities()
-)
+-- lspconfig.util.default_config.capabilities = vim.tbl_deep_extend(
+--     'force',
+--     lspconfig.util.default_config.capabilities,
+--     require('cmp_nvim_lsp').default_capabilities()
+-- )
 
 -- These are just examples. Replace them with the language
 -- servers you have installed in your system
@@ -80,24 +80,6 @@ require('lspconfig').lua_ls.setup({})
 require('lspconfig').jsonls.setup({})
 require('lspconfig').ts_ls.setup({})
 -- require('lspconfig').rust_analyzer.setup({})
-
----
--- Autocompletion setup
----
-local cmp = require('cmp')
-
-cmp.setup({
-    sources = {
-        { name = 'nvim_lsp' },
-    },
-    snippet = {
-        expand = function(args)
-            -- You need Neovim v0.10 to use vim.snippet
-            vim.snippet.expand(args.body)
-        end,
-    },
-    mapping = cmp.mapping.preset.insert({}),
-})
 
 require("mason").setup()
 require("mason-lspconfig").setup()
@@ -188,3 +170,9 @@ require('lualine').setup {
     }
 }
 
+require("aerial").setup({
+    on_attach = function(bufnr)
+        vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
+        vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
+    end,
+})

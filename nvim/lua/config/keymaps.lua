@@ -36,7 +36,7 @@ map("n", "<leader>Y", [["+Y]])
 
 map({ "n", "v" }, "<leader>d", [["_d]])
 
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+map("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- Debug Adapter
 map('n', '<F5>', function() require('dap').continue() end)
@@ -58,3 +58,14 @@ map("n", "<leader>h", ui.toggle_quick_menu)
 map("n", "<C-j>", function() ui.nav_file(1) end)
 map("n", "<C-k>", function() ui.nav_file(2) end)
 map("n", "<C-l>", function() ui.nav_file(3) end)
+
+-- Todo Comments
+map("n", "]t", function()
+  require("todo-comments").jump_next()
+end, { desc = "Next todo comment" })
+
+map("n", "[t", function()
+  require("todo-comments").jump_prev()
+end, { desc = "Previous todo comment" })
+
+map("n", "<leader>fn", "<cmd>AerialToggle!<CR>")
