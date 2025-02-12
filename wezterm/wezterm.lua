@@ -2,7 +2,7 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
 config.color_scheme = 'Catppuccin Mocha'
-config.leader = { key = 'Space', mods = 'CTRL', timeout_milliseconds = 1000 }
+config.leader = { key = 'Space', mods = 'CTRL', timeout_milliseconds = 4000 }
 config.keys = {
     {
         key = 'x',
