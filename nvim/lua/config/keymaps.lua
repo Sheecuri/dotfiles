@@ -55,9 +55,9 @@ local ui = require("harpoon.ui")
 map("n", "<leader>a", mark.add_file)
 map("n", "<leader>h", ui.toggle_quick_menu)
 
-map("n", "<C-j>", function() ui.nav_file(1) end)
-map("n", "<C-k>", function() ui.nav_file(2) end)
-map("n", "<C-l>", function() ui.nav_file(3) end)
+map("n", "<C-m>", function() ui.nav_file(1) end)
+map("n", "<C-n>", function() ui.nav_file(2) end)
+map("n", "<C-i>", function() ui.nav_file(3) end)
 
 -- Todo Comments
 map("n", "]t", function()

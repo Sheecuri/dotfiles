@@ -14,7 +14,6 @@ opt.autoindent = true
 
 opt.scrolloff = 8
 opt.number = true
-opt.relativenumber = true
 opt.showmode = true
 opt.showcmd = true
 opt.visualbell = true
