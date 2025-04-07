@@ -1,7 +1,5 @@
 return {
     { "catppuccin/nvim",               name = "catppuccin", priority = 1000 },
-    -- 'morhetz/gruvbox',
-    -- 'folke/tokyonight.nvim',
     'folke/which-key.nvim',
     'ncm2/ncm2',
     { 'nvim-telescope/telescope.nvim', tag = '0.1.8',       dependencies = { 'nvim-lua/plenary.nvim' } },
@@ -70,7 +68,7 @@ return {
             -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
             -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
             -- See the full "keymap" documentation for information on defining your own keymap.
-            keymap = { preset = 'default' },
+            keymap = { preset = 'super-tab' },
 
             appearance = {
                 -- Sets the fallback highlight groups to nvim-cmp's highlight groups

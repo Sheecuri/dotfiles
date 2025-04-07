@@ -27,3 +27,4 @@ opt.linebreak = true     -- Wrap lines at convenient points
 opt.termguicolors = true -- True color support
 
 opt.colorcolumn = "120"
+opt.signcolumn = 'yes'
