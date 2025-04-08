@@ -39,43 +39,8 @@ require('telescope').setup({})
 ---
 -- LSP configuration
 ---
-vim.opt.signcolumn = 'yes'
 
--- local lspconfig = require('lspconfig')
-
--- Add cmp_nvim_lsp capabilities settings to lspconfig
--- lspconfig.util.default_config.capabilities = vim.tbl_deep_extend(
---     'force',
---     lspconfig.util.default_config.capabilities,
---     require('cmp_nvim_lsp').default_capabilities()
--- )
-
--- These are just examples. Replace them with the language
--- servers you have installed in your system
 require('lspconfig').intelephense.setup({})
--- require('lspconfig').phpactor.setup({
---     cmd = { "phpactor", "language-server" },
---     filetypes = { "php" },
---     root_dir = lspconfig.util.root_pattern("composer.json", ".git"),
---     init_options = {
---         ["language_server_worse_reflection.inlay_hints.enable"] = true,
---         ["language_server_worse_reflection.inlay_hints.params"] = true,
---         ["language_server_worse_reflection.inlay_hints.types"] = true,
---         ["language_server_worse_reflection.enable_cache"] =  true,
---         ["language_server_worse_reflection.cache_dir"] = "%cache%/worse-reflection",
---         ["language_worse_reflection.stub_dir"] = "/home/patrick/repos/Monorepo/services/sams/lumen/_ide_helper_models.php",
---         ["language_server_configuration.auto_config"] = false,
---         ["code_transform.import_globals"] = true,
---         ["language_server_php_cs_fixer.enabled"] = true,
---         ["language_server_php_cs_fixer.bin"] = "/home/patrick/repos/Monorepo/services/sams/lumen/vendor/bin/php-cs-fixer",
---         ["language_server_php_cs_fixer.config"] = "/home/patrick/repos/Monorepo/services/sams/lumen/.php-cs-fixer.php",
---         ["language_server_php_cs_fixer.env"] = {
---             ["XDEBUG_MODE"] = "off",
---             ["PHP_CS_FIXER_IGNORE_ENV"] = false,
---         },
---
---     },
--- })
 require('lspconfig').lua_ls.setup({})
 require('lspconfig').jsonls.setup({})
 require('lspconfig').volar.setup({
