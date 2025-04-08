@@ -112,7 +112,8 @@ require('lspconfig').ts_ls.setup({
         plugins = {
             {
                 name = '@vue/typescript-plugin',
-                location = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server',
+                location = vim.fn.stdpath 'data' ..
+                '/mason/packages/vue-language-server/node_modules/@vue/language-server',
                 languages = { 'vue' },
             },
         },
@@ -194,7 +195,7 @@ require('lualine').setup {
         always_divide_middle = true,
         globalstatus = false,
         refresh = {
-            statusline = 1000,
+            statusline = 100,
             tabline = 1000,
             winbar = 1000,
         }
@@ -232,3 +233,17 @@ require("aerial").setup({
         vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
     end,
 })
+
+require('leap').create_default_mappings()
+
+require('gitsigns').setup {
+    current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+    current_line_blame_opts = {
+        virt_text = true,
+        virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+        delay = 100,
+        ignore_whitespace = false,
+        virt_text_priority = 100,
+        use_focus = true,
+    }
+}
