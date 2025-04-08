@@ -5,21 +5,6 @@ map("n", "<leader>pv", vim.cmd.Oil)
 map("n", "<leader>bn", vim.cmd.bnext)
 map("n", "<leader>bp", vim.cmd.bprev)
 
-map("n", "<leader><leader>", function()
-    vim.cmd("so")
-end)
-
-local builtin = require('telescope.builtin')
-map('n', '<leader>ff', builtin.find_files, {})
-map('n', '<C-p>', builtin.git_files, {})
-map('n', '<leader>vh', builtin.help_tags, {})
-map('n', '<leader>fb', builtin.buffers, {})
-map('n', '<leader>gs', builtin.git_status, {})
-map('n', '<leader>gc', builtin.git_commits, {})
-map('n', '<leader>ps', function()
-    builtin.grep_string({ search = vim.fn.input("Grep > ") })
-end)
-
 --TODO: Move to /after
 map('n', '<leader>cb', '<cmd>!cargo build<cr>')
 map('n', '<leader>cr', '<cmd>!cargo run<cr>')

@@ -35,7 +35,6 @@ require('nvim-treesitter.configs').setup {
         enable = true,
     },
 }
-require('telescope').setup({})
 ---
 -- LSP configuration
 ---
@@ -110,7 +109,6 @@ require("mason-nvim-dap").setup({
 })
 
 local dap = require('dap')
-require('telescope').load_extension('dap')
 
 dap.adapters.php = {
     type = 'executable',
@@ -198,8 +196,6 @@ require("aerial").setup({
         vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
     end,
 })
-
-require('leap').create_default_mappings()
 
 require('gitsigns').setup {
     current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
