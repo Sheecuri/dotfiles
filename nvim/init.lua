@@ -40,7 +40,16 @@ require('nvim-treesitter.configs').setup {
 ---
 
 require('lspconfig').intelephense.setup({})
-require('lspconfig').lua_ls.setup({})
+require('lspconfig').lua_ls.setup({
+    settings = {
+        Lua = {
+            diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = {'vim'},
+            },
+        },
+    },
+})
 require('lspconfig').jsonls.setup({})
 require('lspconfig').volar.setup({
     init_options = {

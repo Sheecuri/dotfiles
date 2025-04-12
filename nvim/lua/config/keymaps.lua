@@ -1,7 +1,7 @@
 local map = vim.keymap.set
 
 map("n", "<leader>l", vim.cmd.Lazy)
-map("n", "<leader>pv", vim.cmd.Oil)
+map("n", "<C-e>", vim.cmd.Oil)
 map("n", "<leader>bn", vim.cmd.bnext)
 map("n", "<leader>bp", vim.cmd.bprev)
 
