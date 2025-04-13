@@ -18,7 +18,7 @@ map("n", "<leader>Y", [["+Y]])
 
 map({ "n", "v" }, "<leader>d", [["_d]])
 
-map("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+map("n", "<leader>cx", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- Debug Adapter
 map('n', '<F5>', function() require('dap').continue() end)

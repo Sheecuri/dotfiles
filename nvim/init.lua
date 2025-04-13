@@ -43,9 +43,15 @@ require('lspconfig').intelephense.setup({})
 require('lspconfig').lua_ls.setup({
     settings = {
         Lua = {
+            workspace = {
+                library = {
+                    "${3rd}/love2d/library",
+                },
+            },
             diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = {'vim'},
+                globals = {
+                    'vim',
+                },
             },
         },
     },
