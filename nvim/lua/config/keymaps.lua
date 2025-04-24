@@ -6,11 +6,11 @@ map("n", "<leader>bn", vim.cmd.bnext)
 map("n", "<leader>bp", vim.cmd.bprev)
 
 --TODO: Move to /after
-map('n', '<leader>cb', '<cmd>!cargo build<cr>')
-map('n', '<leader>cr', '<cmd>!cargo run<cr>')
-map("n", "<leader>cn", function()
-    return ":!cargo new "
-end, { expr = true })
+-- map('n', '<leader>cb', '<cmd>!cargo build<cr>')
+-- map('n', '<leader>cr', '<cmd>!cargo run<cr>')
+-- map("n", "<leader>cn", function()
+--     return ":!cargo new "
+-- end, { expr = true })
 
 map("x", "<leader>p", [["_dP]])
 map({ "n", "v" }, "<leader>y", [["+y]])
@@ -50,5 +50,3 @@ end, { desc = "Next todo comment" })
 map("n", "[t", function()
   require("todo-comments").jump_prev()
 end, { desc = "Previous todo comment" })
-
-map("n", "<leader>fn", "<cmd>AerialToggle!<CR>")

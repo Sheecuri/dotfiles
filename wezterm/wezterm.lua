@@ -2,7 +2,9 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
 config.color_scheme = 'Catppuccin Mocha'
-config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 4000 }
+config.font = wezterm.font('CaskaydiaCove NF')
+config.font_size = 14.0
+config.leader = { key = 'n', mods = 'CTRL', timeout_milliseconds = 4000 }
 config.keys = {
     {
         key = 'x',
@@ -15,13 +17,13 @@ config.keys = {
         action = wezterm.action.SpawnTab 'CurrentPaneDomain'
     },
     {
-        key    = "-",
-        mods   = "LEADER",
+        key    = 'h',
+        mods   = 'LEADER',
         action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' }
     },
     {
-        key    = "=",
-        mods   = "LEADER",
+        key    = 's',
+        mods   = 'LEADER',
         action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' }
     },
     {
@@ -70,23 +72,64 @@ config.keys = {
         action = wezterm.action.ActivateTab(8)
     },
     {
-        key = 'h',
+        key = 'LeftArrow',
         mods = 'LEADER',
         action = wezterm.action.ActivatePaneDirection 'Left'
     },
     {
-        key = 'j',
+        key = 'DownArrow',
         mods = 'LEADER',
         action = wezterm.action.ActivatePaneDirection 'Down'
     },
     {
-        key = 'k',
+        key = 'UpArrow',
         mods = 'LEADER',
         action = wezterm.action.ActivatePaneDirection 'Up'
     },
     {
-        key = 'l',
+        key = 'RightArrow',
         mods = 'LEADER',
+        action = wezterm.action.ActivatePaneDirection 'Right'
+    },
+    {
+        key = 'LeftArrow',
+        mods = 'CTRL|SHIFT',
+        action = wezterm.action.ActivatePaneDirection 'Left'
+    },
+
+    {
+        key = 'x',
+        mods = 'CTRL|SHIFT',
+        action = wezterm.action.ActivateCopyMode
+    },
+    {
+        key = 't',
+        mods = 'CTRL|SHIFT',
+        action = wezterm.action.SpawnTab 'CurrentPaneDomain'
+    },
+    {
+        key    = 'h',
+        mods = 'CTRL|SHIFT',
+        action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' }
+    },
+    {
+        key    = 's',
+        mods = 'CTRL|SHIFT',
+        action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' }
+    },
+    {
+        key = 'DownArrow',
+        mods = 'CTRL|SHIFT',
+        action = wezterm.action.ActivatePaneDirection 'Down'
+    },
+    {
+        key = 'UpArrow',
+        mods = 'CTRL|SHIFT',
+        action = wezterm.action.ActivatePaneDirection 'Up'
+    },
+    {
+        key = 'RightArrow',
+        mods = 'CTRL|SHIFT',
         action = wezterm.action.ActivatePaneDirection 'Right'
     },
 }
