@@ -106,20 +106,29 @@ lspconfig.ts_ls.setup({
     },
     settings = {
         typescript = {
-            tsserver = {
-                useSyntaxServer = false,
-            },
             inlayHints = {
                 includeInlayParameterNameHints = 'all',
-                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
                 includeInlayFunctionParameterTypeHints = true,
                 includeInlayVariableTypeHints = true,
-                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+                includeInlayVariableTypeHintsWhenTypeMatchesName = false,
                 includeInlayPropertyDeclarationTypeHints = true,
                 includeInlayFunctionLikeReturnTypeHints = true,
                 includeInlayEnumMemberValueHints = true,
-            },
+            }
         },
+        javascript = {
+            inlayHints = {
+                includeInlayParameterNameHints = 'all',
+                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+            }
+        }
     },
 })
 
@@ -129,11 +138,7 @@ lspconfig.eslint.setup {
 
     -- Configure ESLint to find the nearest config file
     settings = {
-        packageManager = "yarn", -- or "yarn", "pnpm" depending on what you use
-        codeActionOnSave = {
-            enable = true,
-        },
-
+        packageManager = "yarn", 
         experimental = {
             useFlatConfig = true, -- Enable for eslint.config.js/mjs format
         },
