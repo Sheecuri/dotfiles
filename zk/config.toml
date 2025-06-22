@@ -1,0 +1,29 @@
+# NOTEBOOK SETTINGS
+[notebook]
+dir = "~/notes"
+
+# NOTE SETTINGS
+[note]
+
+# Language used when writing notes.
+# This is used to generate slugs or with date formats.
+language = "en"
+
+# The default title used for new note, if no `--title` flag is provided.
+default-title = "Untitled"
+
+# Template used to generate a note's filename, without extension.
+filename = "{{slug title}}"
+
+# The file extension used for the notes.
+extension = "md"
+
+# Template used to generate a note's content.
+# If not an absolute path, it is relative to .zk/templates/
+template = "default.md"
+
+# EXTERNAL TOOLS
+[tool]
+
+# Default editor used to open notes.
+editor = "nvim"

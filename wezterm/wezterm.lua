@@ -4,7 +4,7 @@ local config = wezterm.config_builder()
 config.color_scheme = 'Catppuccin Mocha'
 config.font = wezterm.font('CaskaydiaCove NF')
 config.font_size = 14.0
-config.leader = { key = 'n', mods = 'CTRL', timeout_milliseconds = 4000 }
+config.leader = { key = 'Space', mods = 'CTRL', timeout_milliseconds = 4000 }
 config.keys = {
     {
         key = 'x',

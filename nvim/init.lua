@@ -106,6 +106,9 @@ lspconfig.ts_ls.setup({
     },
     settings = {
         typescript = {
+            tsserver = {
+                useSyntaxServer = false,
+            },
             inlayHints = {
                 includeInlayParameterNameHints = 'all',
                 includeInlayParameterNameHintsWhenArgumentMatchesName = false,

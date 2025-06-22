@@ -12,6 +12,7 @@ return {
         },
         picker = { enabled = true },
         quickfile = { enabled = true },
+        scroll = { },
     },
     keys = {
         -- Top Pickers & Explorer
