@@ -41,6 +41,7 @@ require('nvim-treesitter.configs').setup {
 
 local lspconfig = require('lspconfig')
 
+lspconfig.rust_analyzer.setup({})
 lspconfig.intelephense.setup({})
 lspconfig.lua_ls.setup({
     settings = {
@@ -196,7 +197,6 @@ lspconfig.eslint.setup {
 }
 
 -- lspconfig.eslint.setup()
--- lspconfig.rust_analyzer.setup({})
 require("mason").setup()
 require("mason-lspconfig").setup()
 require("mason-nvim-dap").setup({
