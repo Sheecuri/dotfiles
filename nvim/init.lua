@@ -1,6 +1,6 @@
 require("core")
-require("config.lazy")
-require("config.keymaps")
+require("packagemanager")
+require("keymaps")
 require("config.autocmds")
 
 require("oil").setup({
@@ -100,7 +100,7 @@ lspconfig.ts_ls.setup({
             {
                 name = "@vue/typescript-plugin",
                 location = vim.fn.stdpath "data" ..
-                "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+                    "/mason/packages/vue-language-server/node_modules/@vue/language-server",
                 languages = { "vue" },
             },
         },
@@ -142,7 +142,7 @@ lspconfig.eslint.setup {
 
     -- Configure ESLint to find the nearest config file
     settings = {
-        packageManager = "yarn", 
+        packageManager = "yarn",
         experimental = {
             useFlatConfig = true, -- Enable for eslint.config.js/mjs format
         },

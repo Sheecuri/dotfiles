@@ -89,4 +89,3 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
 -- Show a column to visualize where the line length limit is
 -- TODO: can this be done project specific?
 vim.opt.colorcolumn = "200"
-
