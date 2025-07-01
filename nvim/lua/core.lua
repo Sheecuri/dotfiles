@@ -80,10 +80,10 @@ vim.g.loaded_netrw = 1
 vim.opt.swapfile = false
 vim.opt.autoread = true
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
-	pattern = { "*.*" },
-	callback = function()
-		vim.cmd([[checktime]])
-	end,
+    pattern = { "*.*" },
+    callback = function()
+        vim.cmd([[checktime]])
+    end,
 })
 
 -- Show a column to visualize where the line length limit is
