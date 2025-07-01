@@ -1,7 +1,7 @@
-require('config.lazy')
-require('config.keymaps')
-require('config.options')
-require('config.autocmds')
+require("core")
+require("config.lazy")
+require("config.keymaps")
+require("config.autocmds")
 
 require("oil").setup({
     keymaps = {
@@ -9,15 +9,15 @@ require("oil").setup({
     }
 })
 
-require('nvim-treesitter.configs').setup {
+require("nvim-treesitter.configs").setup {
     -- A list of parser names, or "all" (the listed parsers MUST always be installed)
-    ensure_installed = 'all',
+    ensure_installed = "all",
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
 
     -- Automatically install missing parsers when entering buffer
-    -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+    -- Recommendation: set to false if you don"t have `tree-sitter` CLI installed locally
     auto_install = true,
 
     ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
@@ -26,7 +26,7 @@ require('nvim-treesitter.configs').setup {
     highlight = {
         enable = true,
         -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-        -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+        -- Set this to `true` if you depend on "syntax" being enabled (like for indentation).
         -- Using this option may slow down your editor, and you may see some duplicate highlights.
         -- Instead of true it can also be a list of languages
         additional_vim_regex_highlighting = false,
@@ -39,7 +39,7 @@ require('nvim-treesitter.configs').setup {
 -- LSP configuration
 ---
 
-local lspconfig = require('lspconfig')
+local lspconfig = require("lspconfig")
 
 lspconfig.rust_analyzer.setup({})
 lspconfig.intelephense.setup({})
@@ -53,7 +53,7 @@ lspconfig.lua_ls.setup({
             },
             diagnostics = {
                 globals = {
-                    'vim',
+                    "vim",
                 },
             },
         },
@@ -98,10 +98,10 @@ lspconfig.ts_ls.setup({
     init_options = {
         plugins = {
             {
-                name = '@vue/typescript-plugin',
-                location = vim.fn.stdpath 'data' ..
-                '/mason/packages/vue-language-server/node_modules/@vue/language-server',
-                languages = { 'vue' },
+                name = "@vue/typescript-plugin",
+                location = vim.fn.stdpath "data" ..
+                "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+                languages = { "vue" },
             },
         },
     },
@@ -111,7 +111,7 @@ lspconfig.ts_ls.setup({
                 useSyntaxServer = false,
             },
             inlayHints = {
-                includeInlayParameterNameHints = 'all',
+                includeInlayParameterNameHints = "all",
                 includeInlayParameterNameHintsWhenArgumentMatchesName = false,
                 includeInlayFunctionParameterTypeHints = true,
                 includeInlayVariableTypeHints = true,
@@ -123,7 +123,7 @@ lspconfig.ts_ls.setup({
         },
         javascript = {
             inlayHints = {
-                includeInlayParameterNameHints = 'all',
+                includeInlayParameterNameHints = "all",
                 includeInlayParameterNameHintsWhenArgumentMatchesName = false,
                 includeInlayFunctionParameterTypeHints = true,
                 includeInlayVariableTypeHints = true,
@@ -172,26 +172,26 @@ lspconfig.eslint.setup {
 
     on_attach = function(client, bufnr)
         -- You can keep the existing formatting capability
-        -- Or override it if you're also using tsserver
+        -- Or override it if you"re also using tsserver
 
         -- Optional: Create a command to manually run ESLint fix
-        vim.api.nvim_buf_create_user_command(bufnr, 'EslintFix', function()
-            vim.cmd('EslintFixAll')
-        end, { desc = 'Fix all eslint errors' })
+        vim.api.nvim_buf_create_user_command(bufnr, "EslintFix", function()
+            vim.cmd("EslintFixAll")
+        end, { desc = "Fix all eslint errors" })
     end,
 
     root_dir = function(filename, bufnr)
         -- Custom root directory detection
         -- This helps eslint-lsp find the nearest config from the current file
         return lspconfig.util.root_pattern(
-            'eslint.config.js',
-            'eslint.config.mjs',
-            '.eslintrc.js',
-            '.eslintrc.cjs',
-            '.eslintrc.json',
-            '.eslintrc.yaml',
-            '.eslintrc.yml',
-            '.eslintrc'
+            "eslint.config.js",
+            "eslint.config.mjs",
+            ".eslintrc.js",
+            ".eslintrc.cjs",
+            ".eslintrc.json",
+            ".eslintrc.yaml",
+            ".eslintrc.yml",
+            ".eslintrc"
         )(filename, bufnr)
     end,
 }
@@ -203,11 +203,11 @@ require("mason-nvim-dap").setup({
     ensure_installed = { "php-debug-adapter", "codelldb" }
 })
 
-local dap = require('dap')
+local dap = require("dap")
 
 dap.adapters.php = {
-    type = 'executable',
-    command = 'node',
+    type = "executable",
+    command = "node",
     args = { os.getenv("HOME") .. "/vscode-php-debug/out/phpDebug.js" },
 
 }
@@ -223,7 +223,7 @@ dap.configurations.php = {
     }
 }
 
-local dapui = require('dapui')
+local dapui = require("dapui")
 
 dap.listeners.after.event_initialized["dapui_config"] = function()
     dapui.open()
@@ -239,12 +239,12 @@ end
 
 dapui.setup()
 
-require('lualine').setup {
+require("lualine").setup {
     options = {
         icons_enabled = true,
-        theme = 'auto',
-        component_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
+        theme = "auto",
+        component_separators = { left = "", right = "" },
+        section_separators = { left = "", right = "" },
         disabled_filetypes = {
             statusline = {},
             winbar = {},
@@ -259,18 +259,18 @@ require('lualine').setup {
         }
     },
     sections = {
-        lualine_a = { 'mode' },
-        lualine_b = { 'branch', 'diff', 'diagnostics' },
-        lualine_c = { { 'filename', path = 1 } },
-        lualine_x = { 'encoding', 'fileformat', 'filetype' },
-        lualine_y = { 'progress' },
-        lualine_z = { 'location' }
+        lualine_a = { "mode" },
+        lualine_b = { "branch", "diff", "diagnostics" },
+        lualine_c = { { "filename", path = 1 } },
+        lualine_x = { "encoding", "fileformat", "filetype" },
+        lualine_y = { "progress" },
+        lualine_z = { "location" }
     },
     inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = { 'filename' },
-        lualine_x = { 'location' },
+        lualine_c = { "filename" },
+        lualine_x = { "location" },
         lualine_y = {},
         lualine_z = {}
     },
@@ -278,18 +278,18 @@ require('lualine').setup {
     winbar = {},
     inactive_winbar = {},
     extensions = {
-        'fugitive',
-        'oil',
-        'mason',
-        'nvim-dap-ui'
+        "fugitive",
+        "oil",
+        "mason",
+        "nvim-dap-ui"
     }
 }
 
-require('gitsigns').setup {
+require("gitsigns").setup {
     current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
     current_line_blame_opts = {
         virt_text = true,
-        virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+        virt_text_pos = "eol", -- "eol" | "overlay" | "right_align"
         delay = 100,
         ignore_whitespace = false,
         virt_text_priority = 100,
