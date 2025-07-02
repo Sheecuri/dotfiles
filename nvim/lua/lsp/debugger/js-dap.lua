@@ -1,31 +1,57 @@
 return {
-    "mxsdev/nvim-dap-vscode-js",
+    -- build debugger from source
+    "microsoft/vscode-js-debug",
+    version = "1.x",
+    build = "npm i && npm run compile vsDebugServerBundle && rm -rf out && mv dist out",
+
     ft = { "svelte", "typescript", "javascript", "vue" },
     dependencies = {
         "mfussenegger/nvim-dap",
-        -- build debugger from source
-        {
-            "microsoft/vscode-js-debug",
-            version = "1.x",
-            build = "npm i && npm run compile vsDebugServerBundle && rm -rf out && mv dist out"
-        }
     },
     config = function()
-        require("dap-vscode-js").setup({
-            debugger_path = vim.fn.stdpath("data") .. "/lazy/vscode-js-debug",
-            adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' },
-        })
+        local path = vim.fn.expand("%")
+        local test_type
+        if path:find("/integration/") then
+            test_type = "integration"
+        elseif path:find("/unit/") then
+            test_type = "unit"
+        end
 
         for _, language in ipairs({ "typescript", "javascript", "svelte" }) do
+            require("dap").adapters["pwa-node"] = {
+                type = "server",
+                host = "localhost",
+                port = "${port}",
+                executable = {
+                    command = "node",
+                    args = { "/home/patrick/.local/share/nvim/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js", "${port}" },
+                }
+            }
             require("dap").configurations[language] = {
+                {
+                    type = "pwa-node",
+                    request = "launch",
+                    name = "Debug Jest",
+                    -- trace = true, -- include debugger info
+                    runtimeExecutable = "node",
+                    runtimeArgs = {
+                        "./node_modules/jest/bin/jest.js",
+                        "--runInBand",
+                        "--config=apps/server/test/" .. test_type .. "/jest.config.ts",
+                        "${file}"
+                    },
+                    rootPath = "${workspaceFolder}",
+                    cwd = "${workspaceFolder}",
+                    console = "integratedTerminal",
+                    internalConsoleOptions = "neverOpen",
+                },
                 -- attach to a node process that has been started with
                 -- `--inspect` for longrunning tasks or `--inspect-brk` for short tasks
                 -- npm script -> `node --inspect-brk ./node_modules/.bin/vite dev`
                 {
-                    -- use nvim-dap-vscode-js's pwa-node debug adapter
                     type = "pwa-node",
                     -- attach to an already running node process with --inspect flag
-                    -- default port: 9222
+                    port = 9229,
                     request = "attach",
                     -- allows us to pick the process using a picker
                     processId = require 'dap.utils'.pick_process,

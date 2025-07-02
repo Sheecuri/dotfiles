@@ -1,5 +1,5 @@
 return {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     dependencies = {
         "neovim/nvim-lspconfig",
         "williamboman/mason-lspconfig.nvim",
@@ -25,7 +25,7 @@ return {
         })
 
         require("mason-lspconfig").setup()
-        require("mason-nvim-dap").setup()
+        require("mason-nvim-dap").setup({})
     end,
     keys = {
         -- LSP
