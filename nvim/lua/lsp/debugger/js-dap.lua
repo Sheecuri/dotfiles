@@ -15,9 +15,11 @@ return {
             test_type = "integration"
         elseif path:find("/unit/") then
             test_type = "unit"
+        else
+            test_type = "undefined"
         end
 
-        for _, language in ipairs({ "typescript", "javascript", "svelte" }) do
+        for _, language in ipairs({ "typescript", "javascript", "vue", "svelte" }) do
             require("dap").adapters["pwa-node"] = {
                 type = "server",
                 host = "localhost",

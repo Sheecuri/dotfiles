@@ -16,6 +16,7 @@ return require("lazy").setup({
         require("plugins/statusline"),
         require("plugins/markdown-renderer"),
         require("plugins/fugitive"),
+        require("plugins/conform"),
     }),
     lazy.lazily({
         require("lsp.debugger"),

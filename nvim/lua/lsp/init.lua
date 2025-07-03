@@ -20,7 +20,8 @@ return {
                 vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
                 vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
                 vim.keymap.set("n", "<F2>", function() vim.lsp.buf.rename() end, opts)
-                vim.keymap.set({ 'n', 'x' }, "<F3>", function() vim.lsp.buf.format() end, opts)
+                -- Replaced by conform
+                -- vim.keymap.set({ 'n', 'x' }, "<F3>", function() vim.lsp.buf.format() end, opts
             end,
         })
 
